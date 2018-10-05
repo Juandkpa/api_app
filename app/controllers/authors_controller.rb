@@ -15,13 +15,14 @@ class AuthorsController < ApplicationController
 
   # POST /authors
   def create
-    @author = Author.new(author_params)
+    render json: author_params
+    # @author = Author.new(author_params)
 
-    if @author.save
-      render json: @author, status: :created, location: @author
-    else
-      render json: @author.errors, status: :unprocessable_entity
-    end
+    # if @author.save
+    #   render json: @author, status: :created, location: @author
+    # else
+    #   render json: @author.errors, status: :unprocessable_entity
+    # end
   end
 
   # PATCH/PUT /authors/1

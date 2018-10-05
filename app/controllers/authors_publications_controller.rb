@@ -3,15 +3,29 @@ class AuthorsPublicationsController < ApplicationController
 
   # POST /publications
   def create
-    b = JSON.parse request.body.read
-    author = b['author']
-    publication = b['publication']
-    #@publication = Publication.new(publication_params)
+    auth = params[:author]
+    pub = params[:publication]
+    a = Author.new
+    a.first_name = auth[:first_name]
+    a.last_name = auth[:last_name]
+    a.code = auth[:code]
 
-    #if @publication.save
-     # render json: @publication, status: :created, location: @publication
-    #else
-     # render json: @publication.errors, status: :unprocessable_entity
-    #end
+    p = Publication.new
+    p.title = pub[:title]
+    p.code = pub[:code]
+    p.date = pub[:date]
+    p.type_p = pub[:type_p]
+
+    Author.transaction do 
+       p.save!
+       a.save!
+       a.publications << p
+    end    
+
+    if a.save
+      render json: a, status: :created, location: a
+    else
+      render json: a.errors, status: :unprocessable_entity
+    end
   end
 end
