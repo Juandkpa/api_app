@@ -6,8 +6,7 @@ class UserMailer < ApplicationMailer
   #
   def welcome_email user
     @greeting = "Hola"
-    @user = user
-    #mail(to: @user.email, subject: 'Libraryapp te de la bienvenida '+@user.name)
+    @user = user    
     mail to: @user.email, subject: 'Libraryapp te de la bienvenida ' + @user.name
     end
 
@@ -18,6 +17,6 @@ class UserMailer < ApplicationMailer
   #
   def farewell_email user
     @user = user	
-	  mail(to: @user.email, subject: 'Hasta pronto '+@user.name)
+	  mail to: @user.email, subject: 'Hasta pronto ' + @user.name
   end
 end
