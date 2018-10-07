@@ -19,6 +19,7 @@ module V1
       @user = User.new(user_params)
 
       if @user.save
+        UserMailer.welcome_email(@user).deliver_now
         #render json: @user, status: :created, location: @user
         render json: @user, status: :created, location: v1_user_url(@user)
       else
@@ -38,6 +39,7 @@ module V1
     # DELETE /users/1
     def destroy
       @user.destroy
+      UserMailer.farewell_email(@user).deliver_now
     end
 
     private
