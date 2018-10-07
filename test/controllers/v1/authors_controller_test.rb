@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AuthorsControllerTest < ActionDispatch::IntegrationTest
+class V1::AuthorsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @author = authors(:one)
   end

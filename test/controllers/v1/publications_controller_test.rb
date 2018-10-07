@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PublicationsControllerTest < ActionDispatch::IntegrationTest
+class V1::PublicationsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @publication = publications(:one)
   end
