@@ -1,5 +1,4 @@
-class UserMailer < ApplicationMailer
-
+class UserMailer < ApplicationMailer  
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -8,7 +7,8 @@ class UserMailer < ApplicationMailer
   def welcome_email user
     @greeting = "Hola"
     @user = user
-    mail(to: @user.email, subject: 'Libraryapp te de la bienvenida '+@user.name)
+    #mail(to: @user.email, subject: 'Libraryapp te de la bienvenida '+@user.name)
+    mail to: @user.email, subject: 'Libraryapp te de la bienvenida ' + @user.name
     end
 
   # Subject can be set in your I18n file at config/locales/en.yml
